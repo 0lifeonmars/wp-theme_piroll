@@ -1,0 +1,69 @@
+@import url(min/fonts.min.css);
+@import url(min/reset.min.css);
+@import url(min/slick.min.css);
+@import url(min/keyframes.min.css);
+@import url(min/style.min.css);
+
+:root {
+    --color__primary: #10C9C3;
+    --color__white: #FFFFFF;
+    --color__black: #191919;
+    --color__grey: #787878;
+    --color__red: #AE0000;
+
+    --color__primary_shade-01: #0eb5b0;
+    --color__primary_shade-02: #0da19c;
+    --color__primary_shade-03: #0b8d89;
+    --color__primary_shade-04: #0a7975;
+    --color__primary_shade-05: #086562;
+    --color__primary_shade-06: #06504e;
+    --color__primary_shade-07: #053c3a;
+    --color__primary_shade-08: #032827;
+    --color__primary_shade-09: #021413;
+
+    --color__grey_shade-01: #6c6c6c;
+    --color__grey_shade-02: #606060;
+    --color__grey_shade-03: #545454;
+    --color__grey_shade-04: #484848;
+    --color__grey_shade-05: #3c3c3c;
+    --color__grey_shade-06: #303030;
+    --color__grey_shade-07: #242424;
+    --color__grey_shade-08: #181818;
+    --color__grey_shade-09: #0c0c0c;
+
+    --color__primary_tint-01: #28cec9;
+    --color__primary_tint-02: #40d4cf;
+    --color__primary_tint-03: #58d9d5;
+    --color__primary_tint-04: #70dfdb;
+    --color__primary_tint-05: #88e4e1;
+    --color__primary_tint-06: #9fe9e7;
+    --color__primary_tint-07: #b7efed;
+    --color__primary_tint-08: #cff4f3;
+    --color__primary_tint-09: #e7faf9;
+
+    --color__grey_tint-01: #868686;
+    --color__grey_tint-02: #939393;
+    --color__grey_tint-03: #a1a1a1;
+    --color__grey_tint-04: #aeaeae;
+    --color__grey_tint-05: #bcbcbc;
+    --color__grey_tint-06: #c9c9c9;
+    --color__grey_tint-07: #d7d7d7;
+    --color__grey_tint-08: #e7e7e7;
+    --color__grey_tint-09: #f9f9f9;
+
+    --color__trans_black-01: rgb(0 0 0 / 80%);
+
+    --width: 80rem;
+    --height: 4.063rem;
+    --padding: 1rem;
+    --gap: 0.75rem;
+    --radius: 0.625rem;
+    --borderWidth: 0.063rem;
+    --border: solid var(--borderWidth);
+    --transitionTime: 700ms;
+
+    --animation__slideInLeft: slideInLeft var(--transitionTime) both;
+    --animation__slideOutLeft: slideOutLeft var(--transitionTime) both;
+    --animation__slideInDown: slideInDown var(--transitionTime) both;
+    --animation__slideOutUp: slideOutUp var(--transitionTime) both;
+}
