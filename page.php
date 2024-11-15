@@ -11,9 +11,9 @@
  *
  * @package piroll
  */
-get_header('page');
+get_header();
 ?>
-<main id="primary" class="site-main">
+<main class="main">
 	<?php
 		while ( have_posts() ) :
 			the_post();

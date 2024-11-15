@@ -2,7 +2,7 @@
 /**
  * Template Name: About Page
  */
-get_header('page');
+get_header();
 ?>
 <main class="main">
     <?php

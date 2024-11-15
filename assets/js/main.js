@@ -1,116 +1,54 @@
 jQuery(document).ready(function($){
-    let scrollpos = window.scrollY;
-    var scrollChange = 5;
-    var body = $('body');
-    var header = $('.header');
-    var header__toggler = $('.header__toggler');
-    var nav = $('.nav');
-    var nav__close = $('.nav__close, .nav ul');
-    var nav__container = $('.nav__container');
-    var work_btn = $('.work__btn');
-    var work_iframe = $('.work__iframe');
-    var work_play = $('.work__play');
+    const html_tag = $('html, body');
+    const header = $('.header');
+    const header__toggler = $('.header__toggler');
+    const nav = $('.nav');
+    const wsp = $('.whatsapp');
+    const footer = $('.footer');
+    const backtop = $('.backtop');
+    const search__form = $('#footer-search');
+    const search__input = $('.searchbox__input');
+    const search__error = $('.searchbox__error');
 
-    const on__fixed = (e) => e.addClass("fixed");
-    const off__fixed = (e) => e.removeClass("fixed");
-    const on__none = (e) => e.addClass("d_none");
-    const off__none = (e) => e.removeClass("d_none");
-    const on__flex = (e) => e.addClass("d_flex");
-    const on__active = (e) => e.addClass("active");
-    const off__active = (e) => e.removeClass("active");
-    const on__overflowHidden = (e) => e.addClass("overflow_hidden");
-    const off__overflowHidden = (e) => e.removeClass("overflow_hidden");
-    const on__slideInLeft = (e) => e.addClass("animation__slideInLeft");
-    const off__slideInLeft = (e) => e.removeClass("animation__slideInLeft");
-    const on__slideOutLeft = (e) => e.addClass("animation__slideOutLeft");
-    const off__slideOutLeft = (e) => e.removeClass("animation__slideOutLeft");
+    const on__none = (e) => e.addClass('d_none');
+    const off__none = (e) => e.removeClass('d_none');
+    const on__fixed = (e) => e.addClass('fixed');
+    const off__fixed = (e) => e.removeClass('fixed');
+    const on__active = (e) => e.addClass('active');
+    const off__active = (e) => e.removeClass('active');
     
     /* SCROLL HEADER */
     $(window).on('scroll', (e) => {
-        scrollpos = window.scrollY;
-        if (scrollpos >= scrollChange) { on__fixed(header); }
-        else { off__fixed(header); }
+        let scrollpos = window.scrollY;
+        let bottomset = window.scrollY + window.innerHeight;
+        var footer_top = (footer.offset().top + 16);
+        if (scrollpos >= 5) { on__fixed(header); on__fixed(nav); on__active(backtop); }
+        else { off__fixed(header); off__fixed(nav); off__active(backtop); }
+        if( bottomset > footer_top ) { off__active(wsp); }
+        else { on__active(wsp); }
     });
 
-    /* DESLIZAR MENu MOBILE */
     header__toggler.on('click', (e) => {
-        if(nav.hasClass('d_none')) {
-            off__none(nav); on__flex(nav);
-            on__active(header__toggler);
-            on__slideInLeft(nav); on__slideInLeft(nav__container);
-            on__overflowHidden(body);
-        }
-
-        else if(nav.hasClass('animation__slideOutLeft')) {
-            on__active(header__toggler);
-            off__slideOutLeft(nav); off__slideOutLeft(nav__container);
-            on__slideInLeft(nav); on__slideInLeft(nav__container);
-            on__overflowHidden(body);
-        }
-        else { e.preventDefault(); }
+        if(!header__toggler.hasClass('active')) { on__active(header__toggler); on__active(nav); }
+        else { off__active(header__toggler); off__active(nav); }
     });
 
-    /* CERRAR NAV AL HACER CLICK EN LINKS */
-    nav__close.on('click', (e) => {
-        if(nav.hasClass('animation__slideInLeft')) {
-            off__active(header__toggler);
-            off__slideInLeft(nav); off__slideInLeft(nav__container);
-            on__slideOutLeft(nav); on__slideOutLeft(nav__container);
-            off__overflowHidden(body);
-        }
-        else { e.preventDefault(); }
+    nav.on('click', (e) => {
+        if(nav.hasClass('active')) { off__active(header__toggler); off__active(nav); }
     });
 
-    /* REPRODUCIR VIDEO DE YOUTUBE SECCION WORK */
-    work_btn.on('click', (e) => {
-        let autoplay_status = String(work_iframe.attr('src'));
-        const autplay_true = '?autoplay=1';
-        work_play.addClass("d_none");
-        work_iframe.attr('src', autoplay_status + autplay_true);
+    backtop.on('click', (e) => { html_tag.animate({scrollTop: 0}); });
+
+    search__form.on('submit', (e) => {
+        let target = $(e.target).serialize().split('s=');
+        let length = target[1].length;
+        if( length >= 1 ) { return true; } 
+        else { off__none(search__error);  return false;  }
     });
 
-    /* SLIDER TESTIMONIOS */
-    $('.testimonials__carousel').slick({
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 2500,
-        dots: true,
-        arrows: false,
-        infinite: true,
-    });
-
-    /* SLIDER CLIENTES */
-    $('.clients__carousel').slick( {
-        slidesToShow: 5,
-        slidesToScroll: 1,
-        autoplay: true, 
-        autoplaySpeed: 2500,
-        dots: false,
-        arrows: false,
-        infinite: false,
-        draggable: false,
-        responsive: [
-            { breakpoint: 1025, settings: { slidesToShow: 4, autoplay: true, infinite: true } },
-            { breakpoint: 769, settings: { slidesToShow: 3, autoplay: true, infinite: true } },
-            { breakpoint: 536, settings: { slidesToShow: 2, autoplay: true, infinite: true } },
-            { breakpoint: 351, settings: { slidesToShow: 1, autoplay: true, infinite: true } }
-        ]
-    });
-
-    $('.sharepostbox').appendTo('.singlebox__data');
-
-    var grid__initial_boxes = 5;
-    const tag_productbox = $('.archive__grid .productbox');
-    const tag_morebtn = $('.archive__load');
-    const total_archiveboxes = tag_productbox.length;
-    const total_moreboxes = 2;
-    tag_productbox.css({'display':'none'});
-    tag_productbox.slice(0, grid__initial_boxes).css({'display':'block'});
-    tag_morebtn.on('click', (e) => {
-        e.preventDefault();
-        tag_productbox.slice(0, grid__initial_boxes + total_moreboxes).fadeIn(800);;
-        grid__initial_boxes = grid__initial_boxes + total_moreboxes;
-        if(grid__initial_boxes >= total_archiveboxes) { e.preventDefault(); tag_morebtn.fadeOut(500); } 
+    search__input.on('keyup', (e) => {
+        let val = $(e.target).val().length;
+        if ( val >= 1 && !search__error.hasClass('d_none') ) { on__none(search__error); }
+        if ( val < 1 ) { off__none(search__error); }
     });
 });

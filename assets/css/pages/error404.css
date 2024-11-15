@@ -1,0 +1,6 @@
+.page404 { min-height: 70vh; }
+@media(min-width: 1000px) { 
+    .page404__col { max-width: calc((100% - (var(--gap) * 2.5)) / 2); } 
+    .page404__thumbnail { max-width: calc(var(--gap) * 28); }
+}
+@media(max-width: 999.89px) { .page404__thumbnail { max-width: calc(var(--gap) * 16); } }
