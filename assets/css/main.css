@@ -1,6 +1,6 @@
-@import url(min/fonts.min.css);
-@import url(reset.css);
-@import url(style.css);
+@import url(min/resources/fonts.min.css);
+@import url(min/resources/reset.min.css);
+@import url(min/style.min.css);
 :root {
     --color__primary: #10C9C3;
     --color__white: #FFFFFF;

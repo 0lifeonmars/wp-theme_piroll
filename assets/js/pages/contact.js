@@ -6,6 +6,7 @@ jQuery(document).ready(function($){
     const tab_select = $('.contactbox__select select');
     const local_href = $(location).attr('href');
     const local_bool = local_href.includes('#');
+    const date_input = $('#form-work-date');
 
     const on__none = (e) => { e.addClass('d_none') };
     const off__none = (e) => { e.removeClass('d_none') };
@@ -22,6 +23,7 @@ jQuery(document).ready(function($){
         else { field_name.html('Selecciona un archivo'); }
     });
 
+    /* TABS */
     tab_btn.on('click', (e) => {
         let tab_target = $(e.target);
         let tab_attr = String(tab_target.attr('data-contactbox-open'));
@@ -51,6 +53,7 @@ jQuery(document).ready(function($){
         }
     });
 
+    /* ABRIR TAB DESDE URL */
     if( local_bool === true ) {
         const local_split =  $(location).attr('href').split('#');
         const local_id = local_split[local_split.length - 1];
@@ -64,4 +67,12 @@ jQuery(document).ready(function($){
             off__active(tab_boxes); on__active(local_tab);
         }
     }
+
+    /* FECHA PARA INPUT HIDDEN */
+    const date = new Date();
+    const DD = String(date.getDate()).padStart(2, '0');
+    const MM = String(date.getMonth() + 1).padStart(2, '0'); 
+    const AAAA = date.getFullYear();
+    const fecha = `${DD}/${MM}/${AAAA}`;
+    date_input.val(fecha);
 });

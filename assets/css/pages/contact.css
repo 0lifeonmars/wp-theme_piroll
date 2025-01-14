@@ -7,6 +7,7 @@
 .filebox .input { padding: 0!important; }
 .filebox__name { display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; border-radius: var(--radius); padding-inline: var(--padding); padding-block: calc(var(--padding) / 1.5);  }
 .contact__iframe iframe { display: block; width: 100%; max-width: 100%; height: calc(var(--gap) * 32); -webkit-filter: grayscale(100%); filter: grayscale(100%); }
+
 /* CONTACT PLUGIN FIX */
 form br { display: none; }
 .wpcf7-not-valid-tip { display: flex; align-items: center; gap: calc(var(--gap) / 3); margin-top: calc(var(--gap) / 1.5); color: var(--color__red); font-weight: 500; font-size: clamp(calc(var(--fontSize) * 1), 4vw, calc(var(--fontSize) * 1.19)); }
@@ -29,8 +30,12 @@ form br { display: none; }
     label[for="form-work-file"] { flex-direction: column; align-items: flex-start; }
     .contactbox__aside { display: none!important; }
 }
-@media (min-width: 451px) {
+@media (min-width: 600px) {
     .filebox__btn { max-width: calc(var(--gap) * 13); }
     .filebox__name { max-width: calc(100% - (var(--gap) * 14)); }
+    input[type=file] { height: calc(var(--gap) * 3.02583333333); }
 }
-@media (max-width: 450.89px) { .filebox >div { flex-direction: column-reverse; } }
+@media (max-width: 599.89px) { 
+    .filebox >div { flex-direction: column-reverse; } 
+    input[type=file] { height: calc(var(--gap) * 6.9925); }
+}

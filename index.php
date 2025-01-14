@@ -12,7 +12,6 @@
  * @package piroll
  */
 $page_thumbnail = get_the_post_thumbnail_url(get_option('page_for_posts'));
-
 if ( is_search() ) {
 	global $wp_query;
 	$search_totals = $wp_query->found_posts; 
@@ -24,9 +23,15 @@ get_header();
 		<div class="pageheader__container d_flex align_items-center py_xxl w_100" <?php if($page_thumbnail) { echo 'data-bg-trans="black-60"'; } ?>>
 			<div class="row d_flex flex_column align_items-center mx_auto w_100" <?php if($page_thumbnail) { echo 'data-txt-color="white" '; } else { echo 'data-txt-color="black" '; } ?>data-txt-align="center">
 				<div class="titlebox d_flex flex_column gap_md w_100" data-txt-weight="400">
-					<?php if ( is_home() && !is_front_page() && !is_category() ) {  ?>
-						<h2 class="titlebox__title title_md d_block mx_auto w_fit" data-txt-weight="700"><?= the_field('work_title', 170); ?></h2>
-						<p class="titlebox__text text_lg d_block mx_auto w_100" data-txt-line="md"><?= the_field('work_text', 170); ?></p>
+					<?php if ( is_home() && !is_front_page() && !is_category() ) {  
+						$blog_page_id = get_option('page_for_posts');
+						if ($blog_page_id) {
+							$acf_title = get_field('work_title', $blog_page_id);
+							$acf_subtitle = get_field('work_text', $blog_page_id);
+						}
+					?>		
+						<h2 class="titlebox__title title_md d_block mx_auto w_fit" data-txt-weight="700"><?= $acf_title; ?></h2>
+						<p class="titlebox__text text_lg d_block mx_auto w_100" data-txt-line="md"><?= $acf_subtitle; ?></p>
 					<?php } else if ( is_search() ) {  ?>
 						<h2 class="titlebox__title title_sm d_block mx_auto w_fit" data-txt-weight="700">" <?= get_search_query();?> "</h2>
 						<?php if( $search_totals >= 1 ) { ?><p class="titlebox__text text_lg d_block mx_auto w_100" data-txt-line="md"><strong data-txt-weight="600"><?= $search_totals; ?></strong> results found</p><?php } ?>

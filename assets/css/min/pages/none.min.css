@@ -1,0 +1,1 @@
+.pageheader__container{min-height:calc(var(--gap) * 17)}.pagenone{padding-block:calc(var(--padding) * 4)}.pagenone__search{border-radius:var(--radius);padding:var(--padding);max-width:calc(var(--gap) * 48)}.pagenone .pageheader__container{min-height:calc(var(--gap) * 12)}

@@ -31,14 +31,14 @@
             <div id="contact" class="contactbox__tab d_block w_100 active">
                 <div class="contactbox__form d_flex flex_column gap_md w_100">
                     <h3 class="d_block w_100 title_xs" data-txt-color="black" data-txt-weight="700" data-txt-transform="uppercase" data-txt-align="center">contact us</h3>
-                    <?= do_shortcode( '[contact-form-7 id="407cb9b" title="FORM => Contacto General"]' ); ?>
+                    <?= do_shortcode( '[contact-form-7 id="023e3e8" title="Contact Form"]' ); ?>
                 </div>
             </div>
 
             <div id="work" class="contactbox__tab d_none w_100">
                 <div class="contactbox__form d_flex flex_column gap_md w_100">
                     <h3 class="d_block w_100 title_xs" data-txt-color="black" data-txt-weight="700" data-txt-transform="uppercase" data-txt-align="center">work with us</h3>
-                    <?= do_shortcode( '[contact-form-7 id="a68d835" title="FORM => Trabaja con nosotros"]' ); ?>
+                    <?= do_shortcode( '[contact-form-7 id="ad0c3bb" title="Work Form"]' ); ?>
                 </div>
             </div>
         </div>
